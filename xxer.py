@@ -45,6 +45,7 @@ class FTPserverThread(threading.Thread):
 class FTPserver(threading.Thread):
     def __init__(self, port):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind(("0.0.0.0", port))
         threading.Thread.__init__(self)
 
@@ -57,6 +58,11 @@ class FTPserver(threading.Thread):
 
     def stop(self):
         self.sock.close()
+
+class HTTPdTCPServer(SocketServer.TCPServer):
+    def server_bind(self):
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.socket.bind(self.server_address)
 
 #Try to import argparse, not available until Python 2.7
 try:
@@ -124,7 +130,7 @@ def parseArgs():
     parser.add_argument("-q", "--quiet", help="surpress extra output", action="store_true", default=False)
     parser.add_argument("-p", "--http", help="HTTP server port", type=int, default=8080)
     parser.add_argument("-P", "--ftp", help="FTP server port", type=int, default=2121)
-    parser.add_argument("-H", "--hostname", help="Hostname of this server", requred=True)
+    parser.add_argument("-H", "--hostname", help="Hostname of this server", required=True)
     return parser.parse_args()
 
 #Main application entry point.
@@ -147,7 +153,7 @@ def main():
 
     # For httpd, derve files from the current directory 
     httpd_handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-    httpd = SocketServer.TCPServer(("0.0.0.0", argv.http), httpd_handler)
+    httpd = HTTPdTCPServer(("0.0.0.0", argv.http), httpd_handler)
 
     print_info("Starting xxer_httpd on port %d" % (argv.http))
     t_httpd = threading.Thread(target=httpd.serve_forever)
