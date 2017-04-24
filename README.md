@@ -63,7 +63,7 @@ info: FTP: recvd 'RETR b'
 ```
 
 ## "Features"
-  * Tends to not correctly close ports after usage. Just wait for it to time out, make a cup of coffee or something.
   * Only has one exfiltration point (currently, the FTP password). Obviously this can be changed up as needed, but may require some basic code changes (specifically in the FTP handlers).
   * Install via ``pip``. Needs at least a requirements.txt or a setup.py. For now just clone and run.
   * Currently serves up everything in the folder in which it was run over HTTP. Probably not a huge security risk, but something you should be aware of, espeially on a public server.
+  * Integrated server file/directory browsing as a future upgrade?
