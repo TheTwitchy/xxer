@@ -3,7 +3,7 @@
 # SocketServer code borrow liberally from https://pymotw.com/2/SocketServer/
 
 #Application global vars
-VERSION = "1.0"
+VERSION = "1.1"
 PROG_NAME = "xxer"
 PROG_DESC = "XXE Injection Handler"
 PROG_EPILOG = "Originally from https://github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-server.rb, rewritten in Python by TheTwitchy"
