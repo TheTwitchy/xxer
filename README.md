@@ -28,7 +28,7 @@ server.rb, rewritten in Python by TheTwitchy
 
 ### Basic Usage
 ```
-root@kali:~$ xxer.py -H 
+root@kali:~$ xxer.py -H kali.host.com
                  
  _ _ _ _ ___ ___ 
 |_'_|_'_| -_|  _|
