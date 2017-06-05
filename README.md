@@ -1,10 +1,10 @@
 # xxer
 A blind XXE injection callback handler. Uses HTTP and FTP to extract information. Originally written in Ruby by [ONsec-Lab](https://github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-server.rb). Rewritten here because I don't like Ruby.
 
+Basically, this doesn't actually find XXE injection for you, it helps you deal with getting useful information back once you've found a vulnerable input. For actually finding vulnerable injection points, I recommend using a small HTTP payload and some sort of DNS callback service like [Burp Collaborator](https://portswigger.net/burp/help/collaborator.html). If Collaborator reports a DNS lookup, followed by an HTTP request, then you're good to go.
+
 ## Target Audience
 If you can explain what XXE injection is and how to find it, this is for you. If not, check out [vulnd_xxe](https://github.com/TheTwitchy/vulnd_xxe).
-
-Basically, this doesn't actually find XXE injection for you, it helps you deal with getting useful information back once you've found a vulnerable input. For actually finding vulnerable injection points, I recommend using a small HTTP payload and some sort of DNS callback service like [Burp Collaborator](https://portswigger.net/burp/help/collaborator.html). If Collaborator reports a DNS lookup, followed by an HTTP request, then you're good to go.
 
 ## Examples
 
