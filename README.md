@@ -4,7 +4,7 @@ A blind XXE injection callback handler. Uses HTTP and FTP to extract information
 ## Target Audience
 If you can explain what XXE injection is and how to find it, this is for you. If not, check out [vulnd_xxe](https://github.com/TheTwitchy/vulnd_xxe).
 
-Basically, this doesn't actually find XXE injection for you, it helps you deal with getting useful information back once you've found a vulnerable input. For actually finding vulnerable injection points, I recommend using a small HTTP payload and some sort of DNS callback service like [Burp Collaborator](https://portswigger.net/burp/help/collaborator.html). If Collaborator reports a DNS lookup, followed by an HTTP lookup, then you're good to go.
+Basically, this doesn't actually find XXE injection for you, it helps you deal with getting useful information back once you've found a vulnerable input. For actually finding vulnerable injection points, I recommend using a small HTTP payload and some sort of DNS callback service like [Burp Collaborator](https://portswigger.net/burp/help/collaborator.html). If Collaborator reports a DNS lookup, followed by an HTTP request, then you're good to go.
 
 ## Examples
 
