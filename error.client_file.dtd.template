@@ -1,0 +1,1 @@
+<!ENTITY % ccc "<!ENTITY &#37; ddd SYSTEM 'file:///%bbb'>">
