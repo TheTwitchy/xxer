@@ -23,6 +23,8 @@ optional arguments:
   -P FTP, --ftp FTP     FTP server port
   -H HOSTNAME, --hostname HOSTNAME
                         Hostname of this server
+  -d DTD_FILE, --dtd DTD_FILE
+                        The DTD file used for the XXE attack
 
 Originally from https://github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-
 server.rb, rewritten in Python by TheTwitchy
