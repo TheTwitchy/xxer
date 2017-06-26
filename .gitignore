@@ -28,3 +28,4 @@ wheels/
 ext.dtd
 *.sublime-workspace
 *.sublime-project
+.idea/
