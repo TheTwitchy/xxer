@@ -21,7 +21,7 @@ except ImportError:
     from http.server import SimpleHTTPRequestHandler
 
 try:
-    from SockerServer import TCPServer
+    from SocketServer import TCPServer
 except ImportError:
     from socketserver import TCPServer
 
