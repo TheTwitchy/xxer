@@ -69,7 +69,7 @@ info: FTP: recvd 'RETR b'
 ## "Features"
   * Only has one exfiltration point (currently, the FTP password). Obviously this can be changed up as needed, but may require some basic code changes (specifically in the FTP handlers).
   * Install via ``pip``. Needs at least a requirements.txt or a setup.py. For now just clone and run.
-  * Currently serves up everything in the folder in which it was run over HTTP. Probably not a huge security risk, but something you should be aware of, espeially on a public server.
+  * Currently serves up everything in the folder in which it was run over HTTP. Probably not a huge security risk, but something you should be aware of, especially on a public server.
   * Integrated server file/directory browsing as a future upgrade?
 
 ## Troubleshooting
@@ -77,7 +77,7 @@ info: FTP: recvd 'RETR b'
     * This could mean a number of things, mostly related to not being vulnerable to XXE:
       * External entities may be disallowed. This can be done by rejecting DOCTYPE decclarations in documents, which I believe prevents XXE injection.
       * It may also allow entities, but disallow entities from remote sources. I've seen this on some Python XML libraries.
-      * Outbound traffic could be blocked at a firewall, or requests mat only go to whitelisted hosts.
+      * Outbound traffic could be blocked at a firewall, or requests may only go to whitelisted hosts.
     * There could also be a typo in the payload or a bug. Check the generated ``ext.dtd`` file to make sure everything looks correct. 
     * If you get some sort of parsing error, make sure you apply URL encoding (or remove it, I dunno) to the payload. Basically make sure you have the "correct" amount of encoding.
   * The initial HTTP callback for ext.dtd works, but after that I see nothing.
